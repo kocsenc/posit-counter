@@ -1,0 +1,14 @@
+body {
+  background-image: url('../background.png');
+}
+
+/* When hiding */
+.animate-show.ng-hide-add {
+  -webkit-animation: hinge 1.5s;
+  display: block!important;
+}
+
+/* When Showing */
+.animate-show.ng-hide-remove {
+  -webkit-animation: flipInX 0.5s;
+}

@@ -1,0 +1,68 @@
+<div class="ui fluid blue segment animated bounceInUp">
+
+  <div class="ui vertical segment">
+    <h1 class="ui header bounce"
+        ng-class="{'animated infinite': main.infiniteBounce}"
+        ng-click="main.infiniteBounce = true">
+      <img src="Martinez.jpeg" class="ui circular image">
+
+      <div class="content">
+        Hola hola!
+        <div class="sub header">Count 'em up!</div>
+      </div>
+    </h1>
+  </div>
+
+  <div class="ui vertical segment">
+    <div class="ui cards">
+      <div class="card" ng-repeat="word in main.words" ng-cloak>
+
+        <div class="ui inverted dimmer" ng-class="{'active': main.loading}">
+        </div>
+
+        <div class="content">
+          <div class="description">
+            <div class="">
+              <div class="right floated">
+                <div class="ui tiny purple statistic">
+                  <div class="value">
+                    {{word.doc.count}}
+                  </div>
+                </div>
+              </div>
+              <div style="font-size: 40px">{{word.doc._id}}</div>
+            </div>
+          </div>
+        </div>
+        <div class="ui bottom attached teal button" ng-click="main.increment(word.doc)">
+          <i class="thumbs up icon"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui vertical segment">
+    <div class="ui action input" ng-class="{'animated shake': main.error.show}">
+      <label>
+        <input type="text"
+               placeholder="Add new word or phrase"
+               ng-model="main.newPhrase">
+      </label>
+      <button class="ui green icon button"
+              ng-class="{disabled: !main.newPhrase || main.newPhrase === ''}"
+              ng-click="main.addNew(main.newPhrase)">
+        <i class="plus icon"></i>
+      </button>
+    </div>
+    <div class="ui warning message animate-show" ng-show="main.error.show">
+      <i class="close icon" ng-click="main.error.show = false;"></i>
+
+      <div class="header">
+        <i class="large warning sign icon"></i>
+        {{main.error.message}}
+      </div>
+    </div>
+  </div>
+
+</div>
+
